@@ -57,4 +57,13 @@ export default class BaseRepository {
       throw error;
     }
   }
+
+  async find(query) {
+    try {
+      const data = await this.model.findOne(query);
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

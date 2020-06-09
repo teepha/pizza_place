@@ -28,6 +28,22 @@ class UsersController {
       return res.json(error);
     }
   }
-
+  static async loginUser(req, res){
+        const userService = new UserService();
+        const { password, username } = req.body;
+        try {
+          const user = await userService.loginAUser({ password, username });
+          if(user){
+          return res
+            .status(200)
+            .json({ user, message: "successfully logged in" });
+          }
+          return res
+            .status(404)
+            .json({ error: true, message: "User not found" });
+        } catch (error) {
+          return res.json(error);
+        }
+  }
 }
 export default UsersController;
