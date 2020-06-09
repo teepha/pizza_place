@@ -4,6 +4,7 @@ import { validator } from "../middlewares/validations";
 import UserController from "../controllers/UserController";
 import { emailCheck } from "../middlewares/emailCheck";
 import MenuController from "../controllers/MenuController";
+import Tokenization from "../helpers/Tokenization";
 
 
 const router = Router();
@@ -44,6 +45,8 @@ router.post(
     check("description", "Description is required").trim().notEmpty(),
     check("price", "Price is required").trim().notEmpty(),
   ],
+  Tokenization.tokenVerify,
+  Tokenization.isAdmin,
   validator,
   MenuController.createMenu
 );

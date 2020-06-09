@@ -33,10 +33,10 @@ class Tokenization {
     const token =
       req.headers.authorization ||
       req.headers["x-access-token"] ||
-      req.query.token
+      req.query.token;
     if (!token) {
       return res.status(401).send({
-        status: "error",
+        error: true,
         message: "No token provided",
       });
     }
@@ -46,10 +46,20 @@ class Tokenization {
       return next();
     } catch (error) {
       return res.status(401).send({
-        status: "error",
+        error: true,
         message: "Unauthorized token",
       });
     }
+  }
+  static async isAdmin(req, res, next) {
+    const { role } = req.verifyUser;
+    if(role !== "admin"){
+      return res.status(401).send({
+        message: "Unauthorized user",
+        error: true,
+      });
+    }
+    return next();
   }
 }
 
