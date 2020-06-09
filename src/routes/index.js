@@ -2,6 +2,7 @@ import { Router } from "express";
 const { check } = require("express-validator");
 import { userValidator } from "../middlewares/validations";
 import UsersController from "../controllers/UserController";
+import { emailCheck } from "../middlewares/emailCheck";
 
 
 const router = Router();
@@ -18,6 +19,7 @@ router.post(
     }),
   ],
   userValidator,
+  emailCheck,
   UsersController.createUser
 );
 
