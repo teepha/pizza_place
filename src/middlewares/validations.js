@@ -2,7 +2,7 @@ import { validationResult } from "express-validator";
 
 const roles = ["user", "admin"];
 
-  export const userValidator = (req, res, next) => {
+  export const validator = (req, res, next) => {
            const errors = validationResult(req);
            console.log(errors.isEmpty());
 

@@ -1,8 +1,9 @@
 import { Router } from "express";
 const { check } = require("express-validator");
-import { userValidator } from "../middlewares/validations";
-import UsersController from "../controllers/UserController";
+import { validator } from "../middlewares/validations";
+import UserController from "../controllers/UserController";
 import { emailCheck } from "../middlewares/emailCheck";
+import MenuController from "../controllers/MenuController";
 
 
 const router = Router();
@@ -18,9 +19,9 @@ router.post(
       min: 5,
     }),
   ],
-  userValidator,
+  validator,
   emailCheck,
-  UsersController.createUser
+  UserController.createUser
 );
 
 router.post(
@@ -32,8 +33,19 @@ router.post(
       min: 5,
     }),
   ],
-  userValidator,
-  UsersController.loginUser
+  validator,
+  UserController.loginUser
+);
+
+router.post(
+  "/menu",
+  [
+    check("name", "Name is required").trim().notEmpty(),
+    check("description", "Description is required").trim().notEmpty(),
+    check("price", "Price is required").trim().notEmpty(),
+  ],
+  validator,
+  MenuController.createMenu
 );
 
 export default router;

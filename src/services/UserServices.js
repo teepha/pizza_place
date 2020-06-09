@@ -8,13 +8,13 @@ dotenv.config();
 
 
 /**
-   * Creates an instance of UserController.
+   * Creates an instance of UserService.
    */
 class UserService {
   /**
-   * Creates an instance of UserController.
+   * Creates an instance of UserService.
    * @param {object} param
-   * @memberof UsersController
+   * @memberof UserService
    */
   constructor() {
     this.userRepository = new UserRepository();
@@ -50,16 +50,18 @@ class UserService {
   async loginAUser(options) {
     try {
       const { password, username } = options;
-    
-      const user = await this.userRepository.find({ where: {
-        username,
-      }});
-      if(user && comparePassword(password, user.password)){
+
+      const user = await this.userRepository.find({
+        where: {
+          username,
+        },
+      });
+      if (user && comparePassword(password, user.password)) {
         const { id, name, role } = user;
-      const token = await Tokenization.generateToken(
-        { id, username, role, name },
-        process.env.EXPIRE
-      );
+        const token = await Tokenization.generateToken(
+          { id, username, role, name },
+          process.env.EXPIRE
+        );
         return { id, name, role, username, token };
       }
       return false;
