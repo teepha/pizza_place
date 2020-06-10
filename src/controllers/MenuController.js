@@ -1,7 +1,6 @@
 import MenuService from "../services/MenuServices";
 
 class MenuController {
-
   static async createMenu(req, res) {
     const menuService = new MenuService();
     const { name, price, description } = req.body;
@@ -15,7 +14,29 @@ class MenuController {
         .status(201)
         .json({ menu, message: "successfully created menu" });
     } catch (error) {
-      return res.json(error);
+      return res
+        .status(500)
+        .json({ error: true,  message: "Unexpected error occured" });
+    }
+  }
+
+  static async getAMenu(req, res) {
+    const menuService = new MenuService();
+    const { menuId } = req.params;
+    try {
+      const menu = await menuService.getOneMenu(menuId);
+      if (!menu) {
+        return res
+          .status(404)
+          .json({ error: true, message: "Menu does not exist" });
+      }
+        return res
+          .status(200)
+          .json({ menu, message: "successfully retrieves a menu" });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ error: true,  message: "Unexpected error occured" });
     }
   }
 }

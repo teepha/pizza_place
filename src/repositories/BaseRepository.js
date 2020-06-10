@@ -1,4 +1,3 @@
-import DocumentNotFound from './RepositoryErrors';
 export default class BaseRepository {
 
   constructor(name, db) {
@@ -18,6 +17,7 @@ export default class BaseRepository {
   async findAll() {
     try {
       const data = await this.model.findAll();
+      if (!data) return false;
       return data;
     } catch (error) {
       throw error;
@@ -29,7 +29,7 @@ export default class BaseRepository {
       const data = await this.model.findOne({
         where: { id },
       });
-      if (!data) throw new DocumentNotFound(`${this.name} not found`);
+      if (!data) return false
       return data;
     } catch (error) {
       throw error;
@@ -39,6 +39,7 @@ export default class BaseRepository {
   async find(query) {
     try {
       const data = await this.model.findOne(query);
+      if (!data) return false;
       return data;
     } catch (error) {
       throw error;

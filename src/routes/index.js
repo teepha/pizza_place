@@ -51,4 +51,15 @@ router.post(
   MenuController.createMenu
 );
 
+
+router.get(
+  "/menu/:menuId",
+  [
+    check("menuId", "Valid Menu ID is required")
+      .isInt(),
+  ],
+  validator,
+  MenuController.getAMenu
+);
+
 export default router;

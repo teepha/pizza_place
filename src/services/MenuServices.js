@@ -18,14 +18,21 @@ class MenuService {
       };
       const newMenu = await this.menuRepository.create(menuDetail);
       const { dataValues } = newMenu;
-   
+
       return { ...dataValues };
     } catch (error) {
       throw error;
     }
   }
-
-
+  async getOneMenu(id) {
+    try {
+      const menu = await this.menuRepository.findById(id);
+      if (!menu) return false;
+      return { menu };
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default MenuService;

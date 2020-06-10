@@ -14,7 +14,9 @@ class UsersController {
       });
       return res.status(201).json({ user, message: "successfully created user" });
     } catch (error) {
-      return res.json(error);
+      return res
+        .status(500)
+        .json({ error: true, message: "Unexpected error occured" });
     }
   }
   static async loginUser(req, res){
@@ -31,7 +33,9 @@ class UsersController {
             .status(404)
             .json({ error: true, message: "User not found" });
         } catch (error) {
-          return res.json(error);
+          return res
+            .status(500)
+            .json({ error: true, message: "Unexpected error occured" });
         }
   }
 }
