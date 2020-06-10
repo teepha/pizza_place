@@ -3,16 +3,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-/** Token Authenticate Class */
 class Tokenization {
-  /**
-   *Generate Token Method
-   * @static
-   * @param {object} userDetails
-   * @param {string} expires
-   * @returns {string} returns token
-   * @memberof Tokenization
-   */
+
   static generateToken(userDetails, expires) {
     const token = jwt.sign(userDetails, process.env.SECRET, {
       expiresIn: expires,
@@ -20,15 +12,6 @@ class Tokenization {
     return token;
   }
 
-  /**
-   *Verfify Token Method
-   * @static
-   * @param {object} req
-   * @param {object} res
-   * @param {object} next
-   * @returns {function} returns an object with status and method property
-   * @memberof Tokenization
-   */
   static async tokenVerify(req, res, next) {
     const token =
       req.headers.authorization ||

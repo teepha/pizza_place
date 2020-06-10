@@ -1,17 +1,7 @@
-/* eslint-disable no-useless-constructor */
 import MenuService from "../services/MenuServices";
 
-/**
- * Creates an instance of MenuController.
- */
 class MenuController {
-  /**
-   * Retrieves menu details
-   * @param {object} req
-   * @param {object} res
-   *@returns {object} - menu
-   */
-  // eslint-disable-next-line class-methods-use-this
+
   static async createMenu(req, res) {
     const menuService = new MenuService();
     const { name, price, description } = req.body;

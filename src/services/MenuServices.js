@@ -3,26 +3,11 @@ import MenuRepository from "../repositories/MenuRepository";
 import dotenv from "dotenv";
 
 dotenv.config();
-
-/**
- * Creates an instance of MenuService.
- */
 class MenuService {
-  /**
-   * Creates an instance of MenuService.
-   * @param {object} param
-   * @memberof MenuService
-   */
   constructor() {
     this.menuRepository = new MenuRepository();
     autoBind(this);
   }
-
-  /**
-   * Creates a new menu
-   * @param {object} - options
-   *@returns {object} - new created menu
-   */
   async createAMenu(options) {
     try {
       const { name, price, description } = options;
@@ -39,6 +24,8 @@ class MenuService {
       throw error;
     }
   }
+
+
 }
 
 export default MenuService;

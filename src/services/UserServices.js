@@ -6,26 +6,12 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-
-/**
-   * Creates an instance of UserService.
-   */
 class UserService {
-  /**
-   * Creates an instance of UserService.
-   * @param {object} param
-   * @memberof UserService
-   */
   constructor() {
     this.userRepository = new UserRepository();
     autoBind(this);
   }
 
-  /**
-   * Creates a new user
-   * @param {object} - options
-   *@returns {object} - new created user
-   */
   async createAUser(options) {
     try {
       const { name, password, username, role } = options;
