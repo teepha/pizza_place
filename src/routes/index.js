@@ -51,6 +51,14 @@ router.post(
   MenuController.createMenu
 );
 
+router.get("/menu", MenuController.getAllMenu);
+
+router.post(
+  "/menu/cart",
+  [check("menuIds", "Array of Menu IDs is required").isArray({ min: 1 })],
+  validator,
+  MenuController.getSomeMenu
+);
 
 router.get(
   "/menu/:menuId",

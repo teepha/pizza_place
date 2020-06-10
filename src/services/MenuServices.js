@@ -33,6 +33,28 @@ class MenuService {
       throw error;
     }
   }
+  async getMenu() {
+    try {
+      const menus = await this.menuRepository.findAll();
+      if (!menus) return false;
+      return { menus };
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getSomeMenu(menuIds) {
+    try {
+      const menus = await this.menuRepository.findAll({
+        where: {
+          id: menuIds,
+        },
+      });
+      if (!menus) return false;
+      return { menus };
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default MenuService;

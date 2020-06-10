@@ -14,9 +14,9 @@ export default class BaseRepository {
     }
   }
 
-  async findAll() {
+  async findAll(query={}) {
     try {
-      const data = await this.model.findAll();
+      const data = await this.model.findAll(query);
       if (!data) return false;
       return data;
     } catch (error) {
