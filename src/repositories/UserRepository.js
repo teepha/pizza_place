@@ -6,4 +6,5 @@ class UserRepository extends BaseRepository {
     super('User', db);
   }
 }
+
 export default UserRepository;

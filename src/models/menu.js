@@ -5,12 +5,16 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: DataTypes.STRING,
       description: DataTypes.STRING,
-      price: DataTypes.INTEGER,
+      price: DataTypes.DECIMAL,
     },
     {}
   );
   Menu.associate = function(models) {
-    // associations can be defined here
+    Menu.belongsToMany(models.Order, {
+      through: "MenuOrder",
+      as: "orders",
+      foreignKey: "menu_id",
+    });
   };
   return Menu;
 };

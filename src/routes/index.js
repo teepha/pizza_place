@@ -2,9 +2,10 @@ import { Router } from "express";
 const { check } = require("express-validator");
 import { validator } from "../middlewares/validations";
 import UserController from "../controllers/UserController";
-import { emailCheck } from "../middlewares/emailCheck";
+import { usernameCheck } from "../middlewares/usernameCheck";
 import MenuController from "../controllers/MenuController";
 import Tokenization from "../helpers/Tokenization";
+import OrderController from "../controllers/OrderController";
 
 
 const router = Router();
@@ -21,7 +22,7 @@ router.post(
     }),
   ],
   validator,
-  emailCheck,
+  usernameCheck,
   UserController.createUser
 );
 
@@ -68,6 +69,33 @@ router.get(
   ],
   validator,
   MenuController.getAMenu
+);
+
+router.post(
+  "/orders",
+  [
+    check("items", "Array of Menus is required").isArray({ min: 1 }),
+    check("name", "Name is required").trim().notEmpty(),
+    check("surname", "Surname is required").trim().notEmpty(),
+    check("address", "Address is required").trim().notEmpty(),
+    check("phone_number", "Phone number is required").trim().notEmpty(),
+  ],
+  validator,
+  Tokenization.tokenVerify,
+  OrderController.createOrder
+  );
+router.get(
+  "/orders/history",
+  Tokenization.tokenVerify,
+  OrderController.getAUserOrderHistory,
+);
+
+router.get(
+  "/orders/:orderId",
+  [check("orderId", "Valid Order ID is required").isInt()],
+  validator,
+  Tokenization.tokenVerify,
+  OrderController.getAnOrder
 );
 
 export default router;

@@ -1,6 +1,6 @@
 import UserRepository from "../repositories/UserRepository";
 
-export const emailCheck = async (req, res, next) => {
+export const usernameCheck = async (req, res, next) => {
   const { username } = req.body;
   const userRepository = new UserRepository();
   const user = await userRepository.find({ where: {

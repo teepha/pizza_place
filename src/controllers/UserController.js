@@ -1,7 +1,7 @@
 import UserService from "../services/UserServices";
 
 class UsersController {
-  
+
   static async createUser(req, res) {  
     const userService = new UserService();
     const { role, password, name, username } = req.body;
@@ -39,4 +39,5 @@ class UsersController {
         }
   }
 }
+
 export default UsersController;

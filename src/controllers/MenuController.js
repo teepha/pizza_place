@@ -1,6 +1,7 @@
 import MenuService from "../services/MenuServices";
 
 class MenuController {
+
   static async createMenu(req, res) {
     const menuService = new MenuService();
     const { name, price, description } = req.body;
@@ -77,4 +78,5 @@ class MenuController {
     }
   }
 }
+
 export default MenuController;
