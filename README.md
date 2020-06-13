@@ -1,6 +1,6 @@
 # Pizza_place API
-
-
+[![Build Status](https://travis-ci.org/teepha/pizza_place.svg?branch=ch%2Ftest)](https://travis-ci.org/teepha/pizza_place)
+[![Coverage Status](https://coveralls.io/repos/github/teepha/pizza_place/badge.svg?branch=ch/test)](https://coveralls.io/github/teepha/pizza_place?branch=ch/test)
 ## Introduction
 An application that provides the endpoints for a simple Pizza store. 
 
@@ -89,7 +89,7 @@ Base_URL -> localhost:9000/api/v1/
   * Get all available menus: 
   ```
   {
-    path: '',
+    path: 'menu',
    method: GET,
 
   }
@@ -136,7 +136,7 @@ Base_URL -> localhost:9000/api/v1/
   
 ```
   {
-    path: 'order/<orderId>',
+    path: 'orders/<orderId>',
     method: GET,
     header: Authorization<token>,
     params: {
