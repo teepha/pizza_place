@@ -1,6 +1,6 @@
 # Pizza_place API
-[![Build Status](https://travis-ci.org/teepha/pizza_place.svg?branch=ch%2Ftest)](https://travis-ci.org/teepha/pizza_place)
-[![Coverage Status](https://coveralls.io/repos/github/teepha/pizza_place/badge.svg?branch=ch/test)](https://coveralls.io/github/teepha/pizza_place?branch=ch/test)
+[![Build Status](https://travis-ci.org/teepha/pizza_place.svg?branch=develop)](https://travis-ci.org/teepha/pizza_place)
+[![Coverage Status](https://coveralls.io/repos/github/teepha/pizza_place/badge.svg?branch=develop)](https://coveralls.io/github/teepha/pizza_place?branch=develop)
 ## Introduction
 An application that provides the endpoints for a simple Pizza store. 
 
@@ -33,7 +33,6 @@ An application that provides the endpoints for a simple Pizza store.
 * Get  a single order detail for a user
 * Get order history for a user
 * Admin can add more menu to the list
-* More test cases, maybe unit testing can be added
 
 ## How To Use
 
@@ -177,6 +176,7 @@ Base_URL -> localhost:9000/api/v1/
 * Admin ability to update menu detail
 * User ability to update their profile and add default delivery address
 *  Payment integration
+* More test cases, maybe unit testing can be added
 
 ## Author
 

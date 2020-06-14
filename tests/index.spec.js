@@ -14,7 +14,7 @@ const userCredentials = {
   role: "user",
 };
 const adminCredentials = {
-  name: "chidimma test",
+  name: "latephat test",
   username: "adminlateefat",
   password: "adminlateefat",
   role: "admin",
