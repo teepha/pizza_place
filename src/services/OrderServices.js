@@ -21,9 +21,6 @@ class MenuService {
 
       items.forEach(async (item) => {
         const menu = await this.menuRepository.findById(item.id);
-        if (!menu) {
-          return false;
-        }
         const menuOrderDetail = {
           quantity: item.quantity,
           price: menu.price * item.quantity,

@@ -33,6 +33,7 @@ An application that provides the endpoints for a simple Pizza store.
 * Get  a single order detail for a user
 * Get order history for a user
 * Admin can add more menu to the list
+* More test cases, maybe unit testing can be added
 
 ## How To Use
 
