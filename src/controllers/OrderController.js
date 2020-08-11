@@ -1,7 +1,6 @@
 import OrderService from "../services/OrderServices";
 
 class OrderController {
-
   static async createOrder(req, res) {
     const orderService = new OrderService();
     const { id } = req.verifyUser;

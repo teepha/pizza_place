@@ -1,6 +1,8 @@
 # Pizza_place API
 [![Build Status](https://travis-ci.org/teepha/pizza_place.svg?branch=develop)](https://travis-ci.org/teepha/pizza_place)
 [![Coverage Status](https://coveralls.io/repos/github/teepha/pizza_place/badge.svg?branch=develop)](https://coveralls.io/github/teepha/pizza_place?branch=develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ad558c1304ae6ac64c19/maintainability)](https://codeclimate.com/github/teepha/pizza_place/maintainability)
+
 ## Introduction
 An application that provides the endpoints for a simple Pizza store. 
 
